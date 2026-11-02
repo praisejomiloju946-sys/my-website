@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Osun Province 9 | Payment Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- PUBLIC WEBSITE -->
+    <div id="publicSection">
+
+        <header class="header">
+
+            <div class="logo">
+                <img src="rccg logo .png" alt="rccg" class="logo-icon">
+
+                <div>
+                    <h2>OSUN PROVINCE 9</h2>
+                    <p>Official Payment Portal</p>
+                </div>
+            </div>
+
+            <button type="button" id="adminToggle" class="admin-button">
+                Admin Login
+            </button>
+
+        </header>
+
+
+        <main>
+
+            <!-- HERO SECTION -->
+            <section class="hero">
+
+                <p class="small-heading">
+                    WELCOME TO OUR OFFICIAL PORTAL
+                </p>
+
+                <h1>Payment Confirmation Portal</h1>
+
+                <p>
+                    Submit your payment details securely for verification
+                    by the Osun Province 9 administration.
+                </p>
+
+                <a href="#paymentSection" class="hero-button">
+                    Submit Payment
+                </a>
+
+            </section>
+
+
+            <!-- BANK DETAILS -->
+            <section class="section">
+
+                <h2>Official Bank Details</h2>
+
+                <p class="section-description">
+                    Make your payment using the official bank details
+                    provided by the administration.
+                </p>
+
+                <div class="bank-card">
+
+                    <h3>Osun Province 9</h3>
+
+                    <p>
+                        <strong>Bank Name:</strong>
+                        OPAY
+                    </p>
+
+                    <p>
+                        <strong>Account Name:</strong>
+                        OLAWUWO PRAISE OLUWAJOILOJU
+                    </p>
+
+                    <p>
+                        <strong>Account Number:</strong>
+                        9076113726
+                    </p>
+
+                    <p class="bank-warning">
+                        Confirm the account details before making payment.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- PAYMENT FORM -->
+            <section class="section" id="paymentSection">
+
+                <h2>Submit Payment Details</h2>
+
+                <p class="section-description">
+                    Complete the form below after making your payment.
+                </p>
+
+                <form id="paymentForm">
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+
+                        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="paymentPurpose">Payment Purpose</label>
+
+                        <select id="paymentPurpose" required>
+
+                            <option value="">
+                                Select payment purpose
+                            </option>
+
+                            <option value="Registration">
+                                Registration
+                            </option>
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="amount">Amount Paid (₦)</label>
+
+                        <input type="number" id="amount" min="1" placeholder="Enter amount" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="transactionRef">
+                            Transaction Reference
+                        </label>
+
+                        <input type="text" id="transactionRef" placeholder="Enter transaction reference" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="paymentDate">Payment Date</label>
+
+                        <input type="date" id="paymentDate" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="note">
+                            Additional Information
+                        </label>
+
+                        <textarea id="note" placeholder="Additional information (optional)"></textarea>
+                    </div>
+
+
+                    <button type="submit" id="submitBtn" class="main-button">
+                        Submit Payment
+                    </button>
+
+                    <p id="formMessage" class="message"></p>
+
+                </form>
+
+            </section>
+
+        </main>
+
+
+        <footer>
+            <p>© 2026 Osun Province 9. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+
+
+    <!-- ADMIN LOGIN -->
+    <section id="adminLogin" class="admin-page" hidden>
+
+        <div class="login-card">
+
+            <img src="rccg logo .png" alt="rccg" class="logo-icon">
+
+            <h2>Administrator Login</h2>
+
+            <p>
+                Sign in with your authorised administrator account.
+            </p>
+
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="adminEmail">
+                        Email Address
+                    </label>
+
+                    <input type="email" id="adminEmail" placeholder="Administrator email" required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="adminPassword">
+                        Password
+                    </label>
+
+                    <input type="password" id="adminPassword" placeholder="Enter your password" required>
+
+                </div>
+
+
+                <button type="submit" id="loginBtn" class="main-button">
+                    Login
+                </button>
+
+
+                <button type="button" id="forgotPasswordBtn" class="back-button">
+                    Forgot Password?
+                </button>
+
+
+                <p id="loginMessage" class="message"></p>
+
+            </form>
+
+
+            <button type="button" id="backToPublic" class="back-button">
+                Back to Homepage
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ADMIN DASHBOARD -->
+    <section id="adminDashboard" class="dashboard-page" hidden>
+
+        <header class="dashboard-header">
+
+            <div>
+                <h2>Osun Province 9</h2>
+                <p>Administrator Dashboard</p>
+            </div>
+
+            <button type="button" id="logoutBtn" class="logout-button">
+                Logout
+            </button>
+
+        </header>
+
+
+        <main class="dashboard-content">
+
+            <h1>Payment Management</h1>
+
+            <p id="adminWelcome"></p>
+
+
+            <!-- STATISTICS -->
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h3>Total Payments</h3>
+                    <p id="totalCount">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Pending</h3>
+                    <p id="pendingCount">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Confirmed</h3>
+                    <p id="confirmedCount">0</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Rejected</h3>
+                    <p id="rejectedCount">0</p>
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH AND REFRESH -->
+            <div class="dashboard-tools">
+
+                <input type="search" id="searchPayments" placeholder="Search payment records...">
+
+                <button type="button" id="refreshBtn">
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <!-- PAYMENT TABLE -->
+            <div class="table-container">
+
+                <table id="paymentTable">
+
+                    <thead>
+
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Amount</th>
+                            <th>Purpose</th>
+                            <th>Reference</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td colspan="6">
+                                No payment records found.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <button type="button" id="backToPublicFromDashboard" class="back-button">
+                Back to Homepage
+            </button>
+
+        </main>
+
+    </section>
+
+
+
+    <!-- JAVASCRIPT -->
+    <script type="module" src="index.js"></script>
+
+</body>
+
+</html>
