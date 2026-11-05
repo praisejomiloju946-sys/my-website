@@ -24,6 +24,7 @@ import {
     orderBy,
     onSnapshot,
     updateDoc,
+    deleteDoc,
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
@@ -542,7 +543,9 @@ function displayPayments() {
 
 
     const searchText =
-        searchPayments.value.trim().toLowerCase();
+        searchPayments
+            ? searchPayments.value.trim().toLowerCase()
+            : "";
 
 
     const filteredPayments = allPayments.filter(function (payment) {
@@ -616,6 +619,8 @@ function displayPayments() {
             document.createElement("td");
 
 
+        // PENDING PAYMENTS: CONFIRM OR REJECT
+
         if (payment.status === "Pending") {
 
             const confirmButton =
@@ -651,6 +656,28 @@ function displayPayments() {
                 rejectButton
             );
 
+
+        // REJECTED PAYMENTS: DELETE
+
+        } else if (payment.status === "Rejected") {
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.textContent = "Delete";
+
+            deleteButton.type = "button";
+
+            deleteButton.addEventListener("click", function () {
+
+                deleteRejectedPayment(payment.id);
+
+            });
+
+            actionCell.appendChild(deleteButton);
+
+
+        // CONFIRMED PAYMENTS
 
         } else {
 
@@ -713,6 +740,75 @@ async function reviewPayment(paymentId, newStatus) {
 
         alert(
             "Unable to update payment: " + error.code
+        );
+
+    }
+
+}
+
+
+// ==========================================
+// DELETE REJECTED PAYMENT
+// ==========================================
+
+async function deleteRejectedPayment(paymentId) {
+
+    if (!currentUser) return;
+
+
+    // Confirm that the user is an authorised administrator
+
+    if (!adminEmails.includes(currentUser.email?.toLowerCase())) {
+
+        alert("You are not authorised to delete payments.");
+
+        return;
+    }
+
+
+    // Find the payment and check its status
+
+    const payment = allPayments.find(function (item) {
+
+        return item.id === paymentId;
+
+    });
+
+
+    if (!payment || payment.status !== "Rejected") {
+
+        alert("Only rejected payments can be deleted.");
+
+        return;
+    }
+
+
+    // Ask for confirmation before permanent deletion
+
+    const confirmed = window.confirm(
+        "Are you sure you want to permanently delete this rejected payment? This action cannot be undone."
+    );
+
+
+    if (!confirmed) return;
+
+
+    try {
+
+        await deleteDoc(
+            doc(db, "paymentRequests", paymentId)
+        );
+
+
+        alert("Rejected payment deleted successfully!");
+
+
+    } catch (error) {
+
+        console.error("Payment deletion error:", error);
+
+        alert(
+            "Unable to delete payment: " + error.code
         );
 
     }
